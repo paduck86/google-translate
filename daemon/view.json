@@ -1,0 +1,67 @@
+{
+  "video_id": 321,
+  "uuid": "9686321f-e5a6-4539-988f-7bb4bddd923e",
+  "video_thumbnail": "thumbnail_9686321f-e5a6-4539-988f-7bb4bddd923e_list.jpg",
+  "channel_id": 53,
+  "channel_group_id": null,
+  "title": "다국어 테스트 - 영화",
+  "description": "다국어 테스트(내용) - 영화",
+  "public": 1,
+  "tags": "Test",
+  "category_id": "entertainment",
+  "sub_category_id": "movies",
+  "reg_date": "2016-04-04T07:04:39.000Z",
+  "update_date": "2016-05-24T06:30:05.000Z",
+  "cnt_view": 2,
+  "locale": "ko",
+  "mesh_obj01": "http://dev-vod.noonvr.com/mesh_data/standard_mono_L.obj?ver=1464071405000",
+  "mesh_obj02": "http://dev-vod.noonvr.com/mesh_data/standard_mono_L.obj?ver=1464071405000",
+  "duration": 6,
+  "len_enc_ios": 0,
+  "thumbnail_url": "http://dev-img.noonvr.com/thumbnail_9686321f-e5a6-4539-988f-7bb4bddd923e_list.jpg?ver=1464071405000",
+  "thumbnail_width": 512,
+  "thumbnail_height": 911,
+  "dar": "720:1280",
+  "sar": "1:1",
+  "cnt_like": 0,
+  "cnt_complaint": 0,
+  "cnt_comment": 0,
+  "skip_trial": 0,
+  "my_like": 0,
+  "my_complaint": 0,
+  "my_pick": 0,
+  "special_flag": 0,
+  "user": {
+    "uuid": "8dadaef9-76f5-400b-8c6f-d105a3f017a9",
+    "nickname": "jjs"
+  },
+  "thumbnail_url_big": "http://dev-img.noonvr.com/thumbnail_9686321f-e5a6-4539-988f-7bb4bddd923e_big.jpg?ver=1464071405000",
+  "thumbnail_url_small": "http://dev-img.noonvr.com/thumbnail_9686321f-e5a6-4539-988f-7bb4bddd923e_small.jpg?ver=1464071405000",
+  "user_thumbnail_url": "",
+  "preview_streaming_url": "http://dev-vod.noonvr.com/9686321f-e5a6-4539-988f-7bb4bddd923e_preview.mp4?ver=1464071405000",
+  "preview_aspectratio": "720:1280",
+  "video_dash": "http://dev-streaming.noonvr.com/vods3/_definst_/smil:amazons3/dev-vod.noonvr.com/video_9686321f-e5a6-4539-988f-7bb4bddd923e_03.smil/manifest.mpd?ver=1464071405000",
+  "video_streaming_url": "http://dev-streaming.noonvr.com/vods3/_definst_/smil:amazons3/dev-vod.noonvr.com/video_9686321f-e5a6-4539-988f-7bb4bddd923e_03.smil/playlist.m3u8?ver=1464071405000",
+  "down": {
+    "url": "http://dev-vod.noonvr.com/9686321f-e5a6-4539-988f-7bb4bddd923e.mp4?ver=1464071405000",
+    "len_enc": "117:75:210:101"
+  },
+  "stab": null,
+  "timeline": {
+    "thumbnail_set_count": 1,
+    "thumbnail_interval": 1,
+    "thumbnail_set_urls": [
+      "http://dev-img.noonvr.com/thumbnail_9686321f-e5a6-4539-988f-7bb4bddd923e_001.jpg?ver=1464071405000"
+    ]
+  },
+  "video_format": "mono",
+  "origin_type": "mono",
+  "camera_type": "standard",
+  "resolutionWidth": 720,
+  "resolutionHeight": 1080,
+  "translation": {
+    "locale": "es",
+    "title": "prueba multilingüe - Películas",
+    "description": "prueba de idioma (contenido) - Película"
+  }
+}

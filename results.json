@@ -1,0 +1,769 @@
+{
+  success: true
+  ;
+  locale: af
+  ;
+  title: titel
+  ;
+  description: beskrywing
+  ;
+  success: tru
+  e
+  ;
+  locale: be
+  ;
+  title: назву
+  ;
+  description: апісанне
+  ;
+  success: true
+  ;
+  locale: bg
+  ;
+  title: заглавие
+  ;
+  description: описание
+  ;
+  success: true
+  ;
+  locale: ceb
+  ;
+  title: titulo
+  ;
+  description: paghulagway
+  ;
+  success: true
+  ;
+  locale: ar
+  ;
+  title: عنوان
+  ;
+  description: وصف
+  ;
+  success: true
+  ;
+  locale: bn
+  ;
+  title: খেতাব
+  ;
+  description: বিবরণ
+  ;
+  success: true
+  ;
+  locale: de
+  ;
+  t
+  itle: Titel
+  ;
+  description: Beschreibung
+  ;
+  success: true
+  ;
+  locale: cy
+  ;
+  title: teitl
+  ;
+  descriptio
+  n: disgrifiad
+  ;
+  success: true
+  ;
+  locale: cs
+  ;
+  title: titul
+  ;
+  description: popis
+  ;
+  success: true
+  ;
+  locale: bs
+  ;
+  title: naslov
+  ;
+  description: opis
+  ;
+  success: true
+  ;
+  locale: da
+  ;
+  title: titel
+  ;
+  desc
+  ription: beskrivelse
+  ;
+  success: true
+  ;
+  locale: az
+  ;
+  title: başlıq
+  ;
+  description: təsvir
+  ;
+  succe
+  ss: true
+  ;
+  locale: es
+  ;
+  title: título
+  ;
+  description: descripción
+  ;
+  success: true
+  ;
+  locale: ca
+  ;
+  t
+  itle: títol
+  ;
+  description: descripció
+  ;
+  success: true
+  ;
+  locale: et
+  ;
+  title: pealkiri
+  ;
+  descripti
+  on: kirjeldus
+  ;
+  success: true
+  ;
+  locale: el
+  ;
+  title: τίτλος
+  ;
+  description: περιγραφή
+  ;
+  success: true
+  ;
+  locale: eu
+  ;
+  title: izenburua
+  ;
+  description: deskribapena
+  ;
+  success: true
+  ;
+  lo
+  cale: fr
+  ;
+  title: Titre
+  ;
+  description: la
+  description
+  ;
+  success: true
+  ;
+  locale: fi
+  ;
+  title: otsi
+  kko
+  ;
+  description: kuvaus
+  ;
+  success: true
+  ;
+  locale: gu
+  ;
+  title: શીર્ષક
+  ;
+  description: વર્ણન
+  ;
+  suc
+  cess: true
+  ;
+  locale: eo
+  ;
+  title: titolo
+  ;
+  description: priskribo
+  ;
+  success: true
+  ;
+  locale: fa
+  ;
+  t
+  itle: عنوان
+  ;
+  description: شرح
+  ;
+  success: true
+  ;
+  locale: gl
+  ;
+  title: título
+  ;
+  description: descr
+  ición
+  ;
+  success: true
+  ;
+  locale: ha
+  ;
+  title: suna
+  ;
+  description: description
+  ;
+  success: true
+  ;
+  loc
+  ale: hr
+  ;
+  title: titula
+  ;
+  description: opis
+  ;
+  success: true
+  ;
+  locale: ga
+  ;
+  title: teideal
+  ;
+  descr
+  iption: tuairisc
+  ;
+  success: true
+  ;
+  locale: hu
+  ;
+  title: cím
+  ;
+  description: leírás
+  ;
+  success: true
+  ;
+  locale: hy
+  ;
+  title: կոչում
+  ;
+  description: նկարագրություն
+  ;
+  success: true
+  ;
+  locale: ig
+  ;
+  title: aha
+  ;
+  description: nkọwa
+  ;
+  success: true
+  ;
+  locale: ht
+  ;
+  title: tit
+  ;
+  description: deskripsyon
+  ;
+  success: true
+  ;
+  locale: lo
+  ;
+  title: ຫົວຂໍ້
+  ;
+  description: ຄໍາອະທິບາຍ
+  ;
+  success: true
+  ;
+  locale: i
+  w
+  ;
+  title: כותרת
+  ;
+  description: תֵאוּר
+  ;
+  success: true
+  ;
+  locale: id
+  ;
+  title: judul
+  ;
+  description: deskripsi
+  ;
+  success: true
+  ;
+  locale: kn
+  ;
+  title: ಶೀರ್ಷಿಕೆ
+  ;
+  description: ವಿವರಣೆ
+  ;
+  success: true
+  ;
+  locale: it
+  ;
+  title: titolo
+  ;
+  description: descrizione
+  ;
+  success: true
+  ;
+  locale: hi
+  ;
+  title: शी
+  र्षक
+  ;
+  description: विवरण
+  ;
+  success: true
+  ;
+  locale: ja
+  ;
+  title: タイトル
+  ;
+  description: 説明
+  ;
+  su
+  ccess: true
+  ;
+  locale: mn
+  ;
+  title: нэр
+  ;
+  description: танилцуулга
+  ;
+  success: true
+  ;
+  locale: mk
+  ;
+  title: Наслов
+  ;
+  description: Опис
+  ;
+  success: true
+  ;
+  locale: kk
+  ;
+  title: тақырып
+  ;
+  description: сипаттамасы
+  ;
+  success: true
+  ;
+  locale: ka
+  ;
+  title: სათაუ
+  რი
+  ;
+  description: აღწერა
+  ;
+  success: false
+  ;
+  locale: ma
+  ;
+  success: true
+  ;
+  locale: mg
+  ;
+  title: loha
+  teny
+  ;
+  description: famaritana
+  ;
+  success: true
+  ;
+  locale: lv
+  ;
+  title: virsraksts
+  ;
+  description: a
+  praksts
+  ;
+  success: true
+  ;
+  locale: ko
+  ;
+  title: 표제
+  ;
+  description: 기술
+  ;
+  success: true
+  ;
+  locale: my
+  ;
+  title: ခေါင်းစဉ်
+  ;
+  description: ဖေါ်ပြချက်
+  ;
+  success: true
+  ;
+  locale: km
+  ;
+  title: ពានរង្វាន់
+  ;
+  description: បរិយាយ
+  ;
+  success: true
+  ;
+  locale: ms
+  ;
+  title: tajuk
+  ;
+  description: penerangan
+  ;
+  su
+  ccess: true
+  ;
+  locale: su
+  ;
+  title: gelar
+  ;
+  description: gambaran
+  ;
+  success: true
+  ;
+  locale: ml
+  ;
+  ti
+  tle: തലക്കെട്ട്
+  ;
+  description: വിവരണം
+  ;
+  success: true
+  ;
+  locale: lt
+  ;
+  title: pavadinimas
+  ;
+  descri
+  ption: aprašymas
+  ;
+  success: true
+  ;
+  locale: no
+  ;
+  title: tittel
+  ;
+  description: beskrivelse
+  ;
+  succe
+  ss: true
+  ;
+  locale: la
+  ;
+  title: Title
+  :
+  ;
+  description: Description
+  ;
+  success: true
+  ;
+  locale: mt
+  ;
+  t
+  itle: titolu
+  ;
+  description: deskrizzjoni
+  ;
+  success: true
+  ;
+  locale: sl
+  ;
+  title: naslov
+  ;
+  descript
+  ion: opis
+  ;
+  success: true
+  ;
+  locale: ny
+  ;
+  title: mutu
+  ;
+  description: mafotokozedwe
+  ;
+  success: tru
+  e
+  ;
+  locale: mr
+  ;
+  title: शीर्षक
+  ;
+  description: वर्णन
+  ;
+  success: true
+  ;
+  locale: pt
+  ;
+  title: título
+  ;
+  description: Descrição
+  ;
+  success: true
+  ;
+  locale: st
+  ;
+  title: tlotla
+  ;
+  description: tlhaloso
+  ;
+  s
+  uccess: true
+  ;
+  locale: pl
+  ;
+  title: tytuł
+  ;
+  description: opis
+  ;
+  success: true
+  ;
+  locale: jw
+  ;
+  titl
+  e: title
+  ;
+  description: gambaran
+  ;
+  success: true
+  ;
+  locale: uk
+  ;
+  title: назва
+  ;
+  description: опис
+  ;
+  success: true
+  ;
+  locale: mi
+  ;
+  title: taitara
+  ;
+  description: whakaahuatanga
+  ;
+  success: true
+  ;
+  locale: ne
+  ;
+  title: शीर्षक
+  ;
+  description: विवरण
+  ;
+  success: true
+  ;
+  locale: nl
+  ;
+  title: tit
+  el
+  ;
+  description: beschrijving
+  ;
+  success: true
+  ;
+  locale: tr
+  ;
+  title: başlık
+  ;
+  description: tan
+  ım
+  ;
+  success: true
+  ;
+  locale: ru
+  ;
+  title: заглавие
+  ;
+  description: описание
+  ;
+  suc
+  cess: true
+  ;
+  locale: so
+  ;
+  title: horyaalka
+  ;
+  description: description
+  ;
+  success: true
+  ;
+  locale: th
+  ;
+  title: หัวข้อ
+  ;
+  description: ลักษณะ
+  ;
+  success: true
+  ;
+  locale: si
+  ;
+  title: ශීර්ෂය
+  ;
+  descripti
+  on: විස්තර
+  ;
+  success: true
+  ;
+  locale: tl
+  ;
+  title: pamagat
+  ;
+  description: paglalarawan
+  ;
+  success: true
+  ;
+  locale: ta
+  ;
+  title: தலைப்பு
+  ;
+  description: விளக்கம்
+  ;
+  success: true
+  ;
+  locale: sq
+  ;
+  title: titull
+  ;
+  description: përshkrim
+  ;
+  success: true
+  ;
+  locale: sw
+  ;
+  title: kichwa
+  ;
+  description: mael
+  ezo
+  ;
+  success: true
+  ;
+  locale: tg
+  ;
+  title: ном
+  ;
+  description: Шарҳи
+  ;
+  success: true
+  ;
+  local
+  e: ur
+  ;
+  title: عنوان
+  ;
+  description: تفصیل
+  ;
+  success: true
+  ;
+  locale: sv
+  ;
+  title: titel
+  ;
+  descripti
+  on: beskrivning
+  ;
+  success: true
+  ;
+  locale: te
+  ;
+  title: టైటిల్
+  ;
+  description: వివరణ
+  ;
+  success: tr
+  ue
+  ;
+  locale: vi
+  ;
+  title: tiêu
+  đề
+  ;
+  description: sự
+  miêu
+  tả
+  ;
+  success: true
+  ;
+  locale: ro
+  ;
+  title: titlu
+  ;
+  description: Descriere
+  ;
+  success: true
+  ;
+  locale: zh
+  -
+  tw
+  ;
+  title: 標題
+  ;
+  description: 描
+  述
+  ;
+  success: true
+  ;
+  locale: uz
+  ;
+  title: sarlavha
+  ;
+  description: tavsifi
+  ;
+  success: true
+  ;
+  locale: yi
+  ;
+  title: טיטל
+  ;
+  description: באַשרייַבונג
+  ;
+  success: true
+  ;
+  locale: hmn
+  ;
+  title: title
+  ;
+  des
+  cription: piav
+  qhia
+  ;
+  success: true
+  ;
+  locale: yo
+  ;
+  title: akọle
+  ;
+  description: apejuwe
+  ;
+  success: true
+  ;
+  locale: zh
+  -
+  cn
+  ;
+  title: 标题
+  ;
+  description: 描述
+  ;
+  success: true
+  ;
+  locale: is
+  ;
+  title: Ti
+  tillinn
+  ;
+  description: Lýsing
+  ;
+  success: true
+  ;
+  locale: zu
+  ;
+  title: isihloko
+  ;
+  description: inca
+  zelo
+  ;
+  success: true
+  ;
+  locale: sk
+  ;
+  title: nadpis
+  ;
+  description: popis
+  ;
+  success: true
+  ;
+  locale: sr
+  ;
+  title: наслов
+  ;
+  description: опис
+  ;
+}

@@ -55,10 +55,13 @@ function setTranslate(conn, data) {
         start_second5 = new Date().getTime() / 1000;
 
         /* 4. insert videos_locale */
-        return insertVideosLocale(conn, results);
+        return insertVideosLocale(conn, results, data);
     })
     .then(function() {
+        console.log('result ::::: ' + JSON.stringify(results, null, 4));
+                
         end_second5 = new Date().getTime() / 1000;
+        end_second = new Date().getTime() / 1000;
 
         /* 5. done */
         console.log('::::::: SUMMARY ::::::');
@@ -70,7 +73,7 @@ function setTranslate(conn, data) {
         console.log("5.insertVideosLocale : " + (end_second5 - start_second5));
     })
     .catch(function (err) {
-        logErr(err);
+        console.log('result ::::: ' + JSON.stringify(err, null, 4));
     })
     .done();
 }
@@ -78,12 +81,13 @@ function setTranslate(conn, data) {
 function insertVideos(conn, data) {
     var deferred = Q.defer();
     var qry = "insert into videos (uuid, title, description, locale) values (?, ?, ?, ?)";
-    var params = {
-        uuid: uuid.v4(),
-        title: data.title,
-        description: data.description,
-        locale: data.locale
-    };
+    data.uuid = uuid.v4();
+    var params = [
+        data.uuid,
+        data.title,
+        data.description,
+        data.locale
+    ];
 
     conn.query(qry, params, function(err, results) {
         if (err) {
@@ -98,13 +102,21 @@ function insertVideos(conn, data) {
 
 function getLocaleList(conn, data) {
     var deferred = Q.defer();
-    var qry = "select locale from videos_locale";
+    var qry = "select locale, google_support, alternative from videos_locale";
 
     conn.query(qry, function(err, results) {
         if(err) {
             deferred.reject(err);
         } else {
-            data.locales = results;
+            data.locales = {};
+            for (var i = 0, length = results.length; i < length; i++) {
+                data.locales[results[i].locale] = {
+                    locale: results[i].locale,
+                    google_support: results[i].google_support,
+                    alternative: results[i].alternative
+                };
+            }
+
             deferred.resolve();
         }
     });
@@ -115,12 +127,19 @@ function getLocaleList(conn, data) {
 function detectLanguage(data) {
     var deferred = Q.defer();
 
-    googleTranslate.detectLanguage(data.description, function(err, detection) {
+    googleTranslate.detectLanguage([data.title, data.description], function(err, detections) {
         if(err) {
             data.detectLanguage = data.locale;
-            deferred.resolve();
+            deferred.reject(err);
         } else {
-            data.detectLanguage = detection;
+            if (detections[1].language !== 'und') {
+                data.detectLanguage = detections[1].language;
+            } else if (detections[0].language !== 'und') {
+                data.detectLanguage = detections[0].language;
+            } else {
+                data.detectLanguage = 'en';
+            }
+
             deferred.resolve();
         }
     });
@@ -132,33 +151,103 @@ function translateLanguage(data, results) {
     var deferred = Q.defer();
     var locales = data.locales;
 
-    // todo : (Q.all) loop  돌리기
-    // todo : 자기언어면 pass
-    googleTranslate.translate([data.title, data.description], data.detectLanguage, locales[0], function(err, translations) {
+    var promises = [];
+    for (var locale in locales) {
+        // exclude google_not_supported language && the language requesting
+        if (data.detectLanguage !== locales[locale].locale && locales[locale].google_support === 'y') {
+            var promise = doTranslate(data, results, locales[locale].locale);
+            promises.push(promise);
+        }
+    }
+
+    Q.allSettled(promises)
+        .then(function() {
+            console.log('translate done...');
+            deferred.resolve();
+        });
+
+    return deferred.promise;
+}
+
+function doTranslate(data, results, locale) {
+    var deferred = Q.defer();
+
+    googleTranslate.translate([data.title, data.description], data.detectLanguage, locale, function(err, translations) {
+        if(err) {
+            results[locale] = {
+                success: false,
+                locale: locale
+            };
+            deferred.reject(err);
+        } else {
+            results[locale] = {
+                success: true,
+                locale: locale,
+                title: translations[0].translatedText,
+                description: translations[1].translatedText
+            };
+            deferred.resolve();
+        }
+    });
+
+    return deferred.promise;
+}
+
+function insertVideosLocale(conn, results, data) {
+    var deferred = Q.defer();
+    var qry = "insert into videos_i18n (uuid, locale, title, description) values ";
+    var uuid = data.uuid;
+    var params = [];
+
+    // add excluded locale (data.detectLanguage, zh, mm, nb)
+    var addLocale = [data.detectLanguage, 'zh', 'mm', 'nb'];
+    for (var i = 0, length = addLocale.length; i < length; i++) {
+        if(results[addLocale[i]] === undefined) {
+            switch (addLocale[i]) {
+                case data.detectLanguage:
+                    results[addLocale[i]] = {
+                        success: true,
+                        locale: addLocale[i],
+                        title: data.title,
+                        description: data.description
+                    };
+                    break;
+                default:
+                    //todo : null 체크 유틸 만들기~~~
+                    if(data.locales[addLocale[i]] !== undefined && data.locales[addLocale[i]].alternative) {
+                        var alternativeLocale = data.locales[addLocale[i]].alternative;
+                        results[addLocale[i]] = {
+                            success: true,
+                            locale: addLocale[i],
+                            title: results[alternativeLocale].title,
+                            description: results[alternativeLocale].description
+                        };
+                    }
+                    break;
+            }
+        }
+    }
+
+    for (var property in results) {
+        var i18n = results[property];
+        if(i18n && i18n.success === true && i18n.title && i18n.description) {
+            qry += "(?, ?, ?, ?),";
+            params.push(uuid, i18n.locale, i18n.title, i18n.description);
+        }
+    }
+
+    qry = qry.substring(0, qry.length-1);
+
+
+    
+    conn.query(qry, params, function(err, result) {
         if(err) {
             deferred.reject(err);
         } else {
-            results[locales[0]] = {
-                title: translations[0].translatedText,
-                description: translations[1].translatedText,
-                locale: locales[0]
-            };
             deferred.resolve();
         }
     });
     return deferred.promise;
 }
 
-function insertVideosLocale(conn, results) {
-    var deferred = Q.defer();
 
-    return deferred.promise;
-}
-
-function logErr(err) {
-    var output = '';
-    for (var property in err) {
-        output += property + ': ' + err[property]+'; ';
-    }
-    console.log("::::: error :::::" + output);
-}
