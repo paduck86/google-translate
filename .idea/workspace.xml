@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9bf4ffc-26a6-4f0a-883c-29d27019bd18" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/daemon/list.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/daemon/view.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/results.json" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/daemon/libs/EventEmitter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/daemon/libs/pubsub.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/daemon/libs/sample.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/daemon/libs/daemon.js" afterPath="$PROJECT_DIR$/daemon/libs/daemon.js" />
     </list>
     <ignored path="googleTranslate.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -474,18 +466,26 @@
       <workItem from="1463967018990" duration="6174000" />
       <workItem from="1463982932327" duration="11544000" />
       <workItem from="1464053819219" duration="8356000" />
-      <workItem from="1464073302084" duration="541000" />
+      <workItem from="1464073302084" duration="668000" />
     </task>
+    <task id="LOCAL-00001" summary="complete!!">
+      <created>1464073861678</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1464073861678</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52065000" />
+    <option name="totallyTimeSpent" value="52192000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1888298" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1888298" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -513,6 +513,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="complete!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete!!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
