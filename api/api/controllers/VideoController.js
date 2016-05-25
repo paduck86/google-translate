@@ -18,6 +18,8 @@ function _postVideo(req, res) {
 
     redis.lpush('ch_translate', JSON.stringify(video));
 
+    console.log('redis push complete!!');
+
     return res.json(video);
 }
 
