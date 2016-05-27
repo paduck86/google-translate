@@ -102,7 +102,7 @@ function insertVideos(conn, data) {
 
 function getLocaleList(conn, data) {
     var deferred = Q.defer();
-    var qry = "select locale, google_support, alternative from videos_locale";
+    var qry = "select locale, google_support, alternative from videos_locale where locale <> 'ma'";
 
     conn.query(qry, function(err, results) {
         if(err) {
@@ -249,5 +249,6 @@ function insertVideosLocale(conn, results, data) {
     });
     return deferred.promise;
 }
+
 
 
