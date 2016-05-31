@@ -10,7 +10,7 @@ var conf = require("./libs/config.js").get(),
         password: conf.db.password
     }),
     redis = require('redis').createClient(conf.redis.port, conf.redis.host),
-    redisQueue = require('simple-redis-queue'),
+    redisQueue = require('./libs/redis-queue.js'),
     myQueue = new redisQueue(redis);
 
 conn.connect();
@@ -34,6 +34,9 @@ myQueue.on('error', function(error) {
 myQueue.monitor("ch_translate");
 
 console.log("start redis queue");
+
+
+
 
 
 

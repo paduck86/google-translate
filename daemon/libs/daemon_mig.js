@@ -40,6 +40,9 @@ function startTranslate(conn) {
         return getMigListCnt(conn);
     })
     .then(function (resultCnt) {
+        if(!resultCnt) {
+            resultCnt = 0;
+        }
         return setTranslateLoop(conn, resultCnt, cntPerProcess);
     })
     .catch(function (err) {
