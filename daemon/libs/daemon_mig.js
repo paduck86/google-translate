@@ -1,14 +1,127 @@
 var Q = require('q');
+var fs = require('fs');
 var uuid = require('node-uuid');
 var conf = require("./config.js").get();
 var googleTranslate = require('google-translate')(conf.apiKey);
 
-module.exports = {
-    setTranslate: setTranslate
+
+Date.prototype.yyyymmddhhmm = function () {
+    function pad2(n) {
+        return (n < 10 ? '0' : '') + n;
+    }
+    return this.getFullYear() +
+    pad2(this.getMonth() + 1) +
+    pad2(this.getDate()) +
+    pad2(this.getHours()) +
+    pad2(this.getMinutes());
+};
+var time = new Date().yyyymmddhhmm();
+console.log = function (str) {
+    str = str + '\n';
+    fs.appendFileSync('mig_' + time + '.log', str);
+    process.stdout.write(str);
 };
 
 
-function setTranslate(conn) {
+module.exports = {
+    startTranslate: startTranslate
+};
+
+
+function startTranslate(conn) {
+
+    var start_second, end_second;
+    start_second = new Date().getTime() / 1000;
+
+    console.log('=========================================Start!!!=======================================');
+    var cntPerProcess = 3;
+
+    Q.fcall(function() {
+        return getMigListCnt(conn);
+    })
+    .then(function (resultCnt) {
+        return setTranslateLoop(conn, resultCnt, cntPerProcess);
+    })
+    .catch(function (err) {
+        console.log('error ::::: ' + JSON.stringify(err, null, 4));
+        process.exit();
+    })
+    .done(function () {
+        console.log('\n\n=========================================Done!!!=======================================');
+        end_second = new Date().getTime() / 1000;
+        console.log('::::::: SUMMARY ::::::');
+        console.log("TOTAL : " + (end_second - start_second));
+        process.exit();
+    });
+
+}
+
+function getMigListCnt(conn) {
+    var deferred = Q.defer();
+    var qry = "";
+    qry += "select count(*) as cnt";
+    qry += "  from ( ";
+    qry += "         select videos.uuid as uuid ";
+    qry += "              , videos.title as title ";
+    qry += "              , videos.description as description ";
+    qry += "              , videos_i18n.uuid as uuid_i18n ";
+    qry += "           from videos ";
+    qry += "           left outer join videos_i18n";
+    qry += "             on videos.uuid = videos_i18n.uuid";
+    qry += "          group by videos.uuid ";
+    qry += "         having uuid_i18n is null ) x";
+
+    conn.query(qry, function(err, result) {
+        if (err) {
+            deferred.reject(err);
+        } else {
+            deferred.resolve(result[0].cnt);
+        }
+    });
+
+    return deferred.promise;
+}
+
+function setTranslateLoop(conn, resultCnt, cntPerProcess) {
+    var deferred = Q.defer();
+    var total = Math.floor(resultCnt / cntPerProcess);
+    var cntArr = [];
+    if((resultCnt % cntPerProcess) > 0) {
+        total += 1;
+    }
+
+    for (var i = 0; i < total; i++) {
+        cntArr.push(i+1);
+    }
+    
+
+    var promises = cntArr.reduce(function(promise, cnt) {
+        return promise.then(function() {
+
+            return setTranslate(conn, total, cnt, cntPerProcess);
+        });
+    }, Q.resolve());
+
+    promises
+    .then(function(cnt) {
+        if(!cnt) {
+            cnt = 0;
+        }
+        console.log('\n\n[[' + cnt + ' / ' + total + ']]--------------------------[Process done]------------------------------');
+        deferred.resolve();
+    })
+    .catch(function(err) {
+        console.log('[[Fail]]--------------------------[Process fail]------------------------------');
+        console.log(err);
+        deferred.reject(err);
+    });
+
+    return deferred.promise;
+}
+
+function setTranslate(conn, total, cnt, cntPerProcess) {
+    var deferred = Q.defer();
+
     var start_second, end_second;
     var start_second1, end_second1;
     var start_second2, end_second2;
@@ -23,11 +136,11 @@ function setTranslate(conn) {
     start_second = new Date().getTime() / 1000;
     start_second1 = new Date().getTime() / 1000;
 
-    console.log('\n\n--------------------------[Start translation - parallel]------------------------------');
+    console.log('\n\n[[' + cnt + ' / ' + total + ']]--------------------------[Start translation - parallel]------------------------------');
 
     Q.fcall(function() {
         /* 0. get migration list */
-        return getMigList(conn, data);
+        return getMigList(conn, data, cntPerProcess);
     })
     .then(function() {
         end_second1 = new Date().getTime() / 1000;
@@ -69,12 +182,12 @@ function setTranslate(conn) {
     })
     .then(function() {
         //console.log('result ::::: ' + JSON.stringify(results, null, 4));
-                
+
         end_second6 = new Date().getTime() / 1000;
         end_second = new Date().getTime() / 1000;
 
         /* 6. done */
-        console.log('::::::: SUMMARY ::::::');
+        console.log('\n::::::: SUMMARY ::::::');
         console.log("total : " + (end_second - start_second));
         console.log("1.insertVideos : " + (end_second1 - start_second1));
         console.log("2.getLocaleList : " + (end_second2 - start_second2));
@@ -83,14 +196,17 @@ function setTranslate(conn) {
         console.log("5.insertVideosLocale : " + (end_second5 - start_second5));
     })
     .catch(function (err) {
-        console.log('error ::::: ' + JSON.stringify(err, null, 4));
+
+        deferred.reject(err);
     })
     .done(function () {
-        process.exit();
+        deferred.resolve(cnt);
     });
+
+    return deferred.promise;
 }
 
-function getMigList(conn, data) {
+function getMigList(conn, data, cntPerProcess) {
     var deferred = Q.defer();
     var qry = "";
     qry += "select x.uuid ";
@@ -105,9 +221,9 @@ function getMigList(conn, data) {
     qry += "           left outer join videos_i18n";
     qry += "             on videos.uuid = videos_i18n.uuid";
     qry += "          group by videos.uuid ";
-    qry += "         having uuid_i18n is null ) x";
+    qry += "         having uuid_i18n is null ) x limit 0,?";
 
-    conn.query(qry, function(err, results) {
+    conn.query(qry, [cntPerProcess] ,function(err, results) {
         if (err) {
             deferred.reject(err);
         } else {
@@ -220,12 +336,12 @@ function translateLanguage(data, results) {
 
     promises
     .then(function() {
-        console.log('language translate done...');
+        console.log('\nlanguage translate done...');
         console.log('total : ' + data.videos_length + " | success : " + data.trans_success_cnt);
         deferred.resolve();
     })
     .catch(function(err) {
-        console.log('language translate fail...' + err);
+        console.log('\nlanguage translate fail...' + err);
         console.log('total : ' + data.videos_length + " | success : " + data.trans_success_cnt);
         deferred.resolve(err);
     });
@@ -357,11 +473,11 @@ function insertVideosLocale(conn, results, data) {
 
     promises
     .then(function() {
-        console.log('insert videos_locale done...');
+        console.log('\ninsert videos_locale done...');
         deferred.resolve();
     })
     .catch(function(err) {
-        console.log('insert videos_locale fail... ' + err);
+        console.log('\ninsert videos_locale fail... ' + err);
         deferred.resolve(err);
     });
 

@@ -12,7 +12,7 @@ var conf = require("./libs/config.js").get(),
 
 conn.connect();
 
-daemon_mig.setTranslate(conn);
+daemon_mig.startTranslate(conn);
 
 
 
